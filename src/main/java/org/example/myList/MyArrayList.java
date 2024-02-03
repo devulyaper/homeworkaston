@@ -1,8 +1,5 @@
 package org.example.myList;
 
-import java.util.Comparator;
-import java.util.List;
-
 public class MyArrayList<T> implements MyList<T> {
     private final int INIT_SIZE = 16;
     private final int CUT_RATE = 4;

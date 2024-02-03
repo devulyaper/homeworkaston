@@ -37,9 +37,7 @@ public class MyListSorter {
         T[] rightArray = (T[]) new Comparable[right - middle];
 
 
-        for (int i = 0; i < leftArray.length; ++i) {
-            leftArray[i] = array[left + i];
-        }
+        System.arraycopy(array, left, leftArray, 0, leftArray.length);
         for (int j = 0; j < rightArray.length; ++j) {
             rightArray[j] = array[middle + 1 + j];
         }

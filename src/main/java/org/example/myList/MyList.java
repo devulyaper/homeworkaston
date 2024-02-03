@@ -8,7 +8,7 @@ public interface MyList<T> {
      *
      * @param item элемент, который нужно добавить в список
      */
-    public void add(T item);
+    void add(T item);
 
     /**
      * Добавляет новый элемент в список по индексу.
@@ -16,13 +16,13 @@ public interface MyList<T> {
      * @param item элемент, который нужно добавить в список
      * @param index индекс, по которому нужно добавить элемент
      */
-    public void add(T item, int index);
+    void add(T item, int index);
 
     /**
      * @param index индекс элемента, который нужно вернуть
      * @return элемент списка по указанному индексу
      */
-    public T get(int index);
+    T get(int index);
 
     /**
      * Удаляет элемент списка по индексу. Все элементы справа от удаляемого
@@ -33,22 +33,22 @@ public interface MyList<T> {
      *
      * @param index индекс элемента, который нужно удалить
      */
-    public void remove(int index);
+    void remove(int index);
 
     /**
      * Удаляет первое вхождение элемента в список.
      *
      * @param item элемент, который нужно удалить из списка
      */
-    public void remove(T item);
+    void remove(T item);
 
     /**
      * Удаляет все элементы из списка.
      */
-    public void removeAll();
+    void removeAll();
 
     /**
      * @return количество элементов в списке
      */
-    public int size();
+    int size();
 }
