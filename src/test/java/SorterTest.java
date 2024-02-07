@@ -3,9 +3,9 @@ import org.example.sorter.MyListSorter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class SorterTest {
+ class SorterTest {
     @Test
-    public void testSorter(){
+     void testSorter(){
         MyArrayList<Integer> array = new MyArrayList<>();
         for (int i = 0; i < 100000; i++) {
             array.add((int) (Math.random() * 100000));
