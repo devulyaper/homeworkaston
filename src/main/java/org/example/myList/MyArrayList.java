@@ -1,8 +1,11 @@
 package org.example.myList;
 
+import java.util.Objects;
+
 public class MyArrayList<T> implements MyList<T> {
-    private final int INIT_SIZE = 16;
-    private final int CUT_RATE = 4;
+    private static final int INIT_SIZE = 16;
+    private static final int CUT_RATE = 4;
+    public static final String OUT_OF_BOUND_ERR_MSG = "Index: %d, Size: %d";
     private Object[] array = new Object[INIT_SIZE];
     private int pointer = 0;
 
@@ -14,7 +17,7 @@ public class MyArrayList<T> implements MyList<T> {
 
     public void add(T item, int index) {
         if (index < 0 || index > pointer) {
-            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + pointer);
+            throw new IndexOutOfBoundsException(String.format(OUT_OF_BOUND_ERR_MSG, index, pointer));// вот такое форматирование лучше + строки сообщения всегда выносим в статические константы
         }
 
         if (pointer == array.length - 1) {
@@ -30,27 +33,25 @@ public class MyArrayList<T> implements MyList<T> {
     }
     public void remove(int index) {
 
-        for (int i = index; i<pointer; i++)
+        for (int i = index; i<pointer; i++) { // {} - не забывай про них, они улучшают читаемосить
             array[i] = array[i+1];
+        }
         array[pointer] = null;
         pointer--;
-        if (array.length > INIT_SIZE && pointer < array.length / CUT_RATE)
+        if (resizeNeeded()) {// если предикат сложный, его лучше вынести в отдельный метод
             resize(array.length/2);
+        }
     }
+
+    private boolean resizeNeeded() { // просто как пример, нейминг можно и улучшить)
+        return array.length > INIT_SIZE && pointer < array.length / CUT_RATE;
+    }
+
     public void remove(T item) {
-        if (item == null) {
-            for (int i = 0; i < pointer; i++) {
-                if (array[i] == null) {
-                    remove(i);
-                    return;
-                }
-            }
-        } else {
-            for (int i = 0; i < pointer; i++) {
-                if (item.equals(array[i])) {
-                    remove(i);
-                    return;
-                }
+        for (int i = 0; i < pointer; i++) {
+            if (Objects.equals(item, array[i])) {
+                remove(i);
+                return;
             }
         }
     }

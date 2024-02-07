@@ -1,18 +1,12 @@
 import org.example.myList.MyArrayList;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class MyArrayListTest {
-    private MyArrayList<Integer> list;
-
-    @BeforeEach
-    public void setUp() {
-        list = new MyArrayList<>();
-    }
+ class MyArrayListTest {
+    private MyArrayList<Integer> list =  new MyArrayList<>();
 
     @Test
-    public void testAddAndGet() {
+     void testAddAndGet() {
         list.add(1);
         list.add(2);
         assertEquals(1, list.get(0));
@@ -20,7 +14,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void testAddByIndex() {
+     void testAddByIndex() {
         list.add(1, 0);
         list.add(3, 1);
         list.add(2, 1);
@@ -30,7 +24,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void testRemoveByIndex() {
+     void testRemoveByIndex() {
         list.add(1);
         list.add(2);
         list.add(3);
@@ -40,7 +34,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void testRemoveByValue() {
+     void testRemoveByValue() {
         list.add(1);
         list.add(2);
         list.add(3);
@@ -50,7 +44,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void testRemoveAll() {
+     void testRemoveAll() {
         list.add(1);
         list.add(2);
         list.removeAll();
@@ -58,7 +52,7 @@ public class MyArrayListTest {
     }
 
     @Test
-    public void testSize() {
+     void testSize() {
         list.add(1);
         list.add(2);
         assertEquals(2, list.size());
